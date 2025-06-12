@@ -1,0 +1,117 @@
+body {
+    font-family: "Kiwi Maru", serif;
+    box-sizing: border-box;
+    counter-reset: title-cnt 0;
+
+    background-color: #FFF4EC;
+}
+
+h1 {
+    margin: 40px auto 0;
+    width: 85%;
+}
+
+/* <wbr>を機能させる */
+p {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.introduction {
+    margin: 90px auto;
+    width: 80%;
+    border: 1px solid #000;/**/
+}
+
+.activity-title {
+
+    display: flex;
+    margin: 20px 30px;
+    gap: 10px;
+
+    h2 {
+        width: fit-content;
+        text-align: center;
+    }
+
+    .line {
+        flex: 1;
+        height: 2px;
+        background-color: #404040;
+        align-self: center;
+    }
+}
+
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 90px;
+    margin: 40px 40px 120px;
+
+    .product-head {
+        width: 320px;
+
+        border: 1px solid #000;/**/
+
+        .product-title {
+            font-size: 1.6em;
+            border: 1px solid #000;/**/
+        }
+
+        .product-sub-title1 {
+            font-size: 1.3em;
+            border: 1px solid #000;/**/
+        }
+
+        .product-sub-title2 {
+            font-size: 1.15em;
+            border: 1px solid #000;/**/
+        }
+    }
+
+    .product-head.use-animation {
+        opacity: 0.2;
+        transform: rotateZ(0deg);
+        transition: opacity 2s ease, transform 2s ease;
+    }
+
+    .product-body {
+        width: 400px;
+        border: 1px solid #000;/**/
+    }
+
+    .product-body.use-animation {
+        opacity: 0.1;
+        transform: translateY(-20px);
+        transition: opacity 4s ease, transform 4s ease;
+    }
+
+    .product-body.use-animation.animate {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.product.left {
+    .product-head.use-animation.animate {
+        opacity: 1;
+        transform: rotateZ(-5deg);
+    }
+}
+
+.product.right {
+    flex-direction: row-reverse;
+
+    .product-head.use-animation.animate {
+        opacity: 1;
+        transform: rotateZ(5deg);
+    }
+}
+
+.product-title::before {
+    counter-increment: title-cnt 1;
+    content: counter(title-cnt) ". ";
+    pointer-events: none;
+}
